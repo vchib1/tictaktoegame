@@ -181,7 +181,7 @@ class _MyAppState extends State<MyApp> {
       _roundResult = '${_showOnX[0]} wins';
       _whoWins = _showOnX[0];
       _newGame = false;
-      Future.delayed(const Duration(seconds: 5), () {
+      Future.delayed(const Duration(seconds: 1), () {
         _nextRound();
       });
 
