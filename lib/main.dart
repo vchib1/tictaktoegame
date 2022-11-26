@@ -36,6 +36,8 @@ class _MyAppState extends State<MyApp> {
 
   int _xScore = 0; //initial score
 
+  int delayedTime = 1; // Time in Seconds to start the next round after the round is won.
+
   //Main Theme for UI and TextStyle
   Color mainColor = Colors.tealAccent.shade100;
   Color secondaryColor = Colors.redAccent;
@@ -98,7 +100,12 @@ class _MyAppState extends State<MyApp> {
                     itemBuilder: (context, int index){
                       return GestureDetector(
                         onTap: (){
-                          _onTapped(index);
+                          if(_whoWins == 'X' || _whoWins == 'O'){
+                            //It disables the gesture detector to accept any input after the round is won.
+                          }
+                          else {
+                            _onTapped(index);
+                          }
                         },
                         child: Container(
                             decoration: BoxDecoration(
@@ -158,21 +165,21 @@ class _MyAppState extends State<MyApp> {
       _roundResult = '${_showOnX[0]} wins';
       _whoWins = _showOnX[0];
       _newGame = false;
-      Future.delayed(const Duration(seconds: 1), () {
+      Future.delayed(Duration(seconds: delayedTime), () {
         _nextRound();
       });
     }else if(_showOnX[3] == _showOnX[4] && _showOnX[4] == _showOnX[5] && _showOnX[3] != ''){
       _roundResult = '${_showOnX[3]} wins';
       _whoWins = _showOnX[3];
       _newGame = false;
-      Future.delayed(const Duration(seconds: 1), () {
+      Future.delayed(Duration(seconds: delayedTime), () {
         _nextRound();
       });
     }else if(_showOnX[6] == _showOnX[7] && _showOnX[7] == _showOnX[8] && _showOnX[6] != ''){
       _roundResult = '${_showOnX[6]} wins';
       _whoWins = _showOnX[6];
       _newGame = false;
-      Future.delayed(const Duration(seconds: 1), () {
+      Future.delayed(Duration(seconds: delayedTime), () {
         _nextRound();
       });
     }
@@ -181,7 +188,7 @@ class _MyAppState extends State<MyApp> {
       _roundResult = '${_showOnX[0]} wins';
       _whoWins = _showOnX[0];
       _newGame = false;
-      Future.delayed(const Duration(seconds: 5), () {
+      Future.delayed(Duration(seconds: delayedTime), () {
         _nextRound();
       });
 
@@ -189,14 +196,14 @@ class _MyAppState extends State<MyApp> {
       _roundResult = '${_showOnX[1]} wins';
       _whoWins = _showOnX[1];
       _newGame = false;
-      Future.delayed(const Duration(seconds: 1), () {
+      Future.delayed(Duration(seconds: delayedTime), () {
         _nextRound();
       });
     }else if(_showOnX[2] == _showOnX[5] && _showOnX[5] == _showOnX[8] && _showOnX[2] != ''){
       _roundResult = '${_showOnX[2]} wins';
       _whoWins = _showOnX[2];
       _newGame = false;
-      Future.delayed(const Duration(seconds: 1), () {
+      Future.delayed(Duration(seconds: delayedTime), () {
         _nextRound();
       });
     }
@@ -205,20 +212,20 @@ class _MyAppState extends State<MyApp> {
       _roundResult = '${_showOnX[0]} wins';
       _whoWins = _showOnX[0];
       _newGame = false;
-      Future.delayed(const Duration(seconds: 1), () {
+      Future.delayed(Duration(seconds: delayedTime), () {
         _nextRound();
       });
     }else if(_showOnX[2] == _showOnX[4] && _showOnX[4] == _showOnX[6] && _showOnX[2] != ''){
       _roundResult = '${_showOnX[2]} wins';
       _whoWins = _showOnX[2];
       _newGame = false;
-      Future.delayed(const Duration(seconds: 1), () {
+      Future.delayed(Duration(seconds: delayedTime), () {
         _nextRound();
       });
     }else if(_filled == 9){
       _roundResult = 'Draw';
       _newGame = false;
-      Future.delayed(const Duration(seconds: 1), () {
+      Future.delayed(Duration(seconds: delayedTime), () {
         _nextRound();
       });
     }
